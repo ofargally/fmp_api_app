@@ -49,7 +49,8 @@ def get_financial_data(
     max_revenue: Optional[int] = Query(None, ge=0),
     min_net_income: Optional[int] = Query(None, ge=0),
     max_net_income: Optional[int] = Query(None, ge=0),
-    sort_by: Optional[str] = Query(None, regex="^(date|revenue|netIncome)$"),
+    sort_by: Optional[str] = Query(
+        None, regex="^(date|revenue|netIncome)$"),
     order: Optional[str] = Query("asc", regex="^(asc|desc)$")
 ):
     # Filter
