@@ -8,7 +8,9 @@ from dotenv import load_dotenv
 import os
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '.env'))
 api_key = os.getenv('API_KEY')
-deployment_url = os.getenv('DEPLOYMENT_URL')
+DEPLOYMENT_URL_1 = os.getenv('DEPLOYMENT_URL')
+DEPLOYMENT_URL_2 = os.getenv('DEPLOYMENT_URL_2')
+DEPLOYMENT_URL_3 = os.getenv('DEPLOYMENT_URL_3')
 localhost = os.getenv('LOCAL_HOST')
 financial_data = []
 
@@ -32,7 +34,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan, title="Data API")
 
-origins = [deployment_url, localhost]
+origins = [DEPLOYMENT_URL_1, DEPLOYMENT_URL_2, DEPLOYMENT_URL_3, localhost]
 
 app.add_middleware(
     CORSMiddleware,
