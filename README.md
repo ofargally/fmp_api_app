@@ -121,6 +121,7 @@ VITE_LOCAL_HOST=http://127.0.0.1:8000
 
 Project Structure
 
+```bash
 fmp_api_app/
 ├── front-end/
 │ ├── api/
@@ -139,6 +140,7 @@ fmp_api_app/
 │ └── ...other back-end files
 ├── .gitignore
 └── README.md
+```
 
 ## Front-End Build
 
