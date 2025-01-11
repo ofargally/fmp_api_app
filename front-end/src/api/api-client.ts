@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://127.0.0.1:8000",
+  baseURL: import.meta.env.VITE_SERVER_URL || import.meta.env.VITE_LOCAL_HOST,
   timeout: 10000,
 });
 

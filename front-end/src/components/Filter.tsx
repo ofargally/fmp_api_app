@@ -48,7 +48,8 @@ const Filter: React.FC<FilterProps> = ({ filters, onFilterChange }) => {
   return (
     <form onSubmit={handleSubmit} className="p-4 bg-white rounded-lg shadow-md">
       <h3 className="text-lg font-semibold mb-4">Filters</h3>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* Start Year */}
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700">
             Start Year (2020-2024)
@@ -63,6 +64,8 @@ const Filter: React.FC<FilterProps> = ({ filters, onFilterChange }) => {
             className="w-full px-3 py-2 border border-gray-300 rounded-md"
           />
         </div>
+
+        {/* End Year */}
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700">
             End Year (2020-2024)
@@ -77,6 +80,8 @@ const Filter: React.FC<FilterProps> = ({ filters, onFilterChange }) => {
             className="w-full px-3 py-2 border border-gray-300 rounded-md"
           />
         </div>
+
+        {/* Min Revenue */}
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700">
             Min Revenue
@@ -90,6 +95,8 @@ const Filter: React.FC<FilterProps> = ({ filters, onFilterChange }) => {
             className="w-full px-3 py-2 border border-gray-300 rounded-md"
           />
         </div>
+
+        {/* Max Revenue */}
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700">
             Max Revenue
@@ -103,6 +110,8 @@ const Filter: React.FC<FilterProps> = ({ filters, onFilterChange }) => {
             className="w-full px-3 py-2 border border-gray-300 rounded-md"
           />
         </div>
+
+        {/* Min Net Income */}
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700">
             Min Net Income
@@ -116,6 +125,8 @@ const Filter: React.FC<FilterProps> = ({ filters, onFilterChange }) => {
             className="w-full px-3 py-2 border border-gray-300 rounded-md"
           />
         </div>
+
+        {/* Max Net Income */}
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700">
             Max Net Income
@@ -131,8 +142,8 @@ const Filter: React.FC<FilterProps> = ({ filters, onFilterChange }) => {
         </div>
       </div>
       <button
-        onClick={handleApplyFilters}
-        className="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-md"
+        type="submit"
+        className="mt-6 w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none"
       >
         Apply Filters
       </button>

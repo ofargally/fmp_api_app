@@ -23,7 +23,7 @@ function App() {
     if (data) console.log(data);
   }, [data]);
 
-  // Call mutate when filter criteria changes
+  // Handle updated filters from child
   const handleFilterChange = (updatedFilters: FilterParams) => {
     setFilters(updatedFilters);
   };
@@ -43,7 +43,7 @@ function App() {
     <div className="min-h-screen bg-gray-50 p-4 sm:p-6 lg:p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header section with Sort component */}
-        <div className="mb-6 flex justify-between items-center">
+        <div className="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
               Financial Data Dashboard for Apple Inc. (AAPL)
@@ -61,15 +61,25 @@ function App() {
               API
             </h2>
           </div>
-          <Sort onSort={handleSort} />
         </div>
-        {/* Table section - full width on all screens */}
-        <div className="overflow-x-auto bg-white rounded-lg shadow"></div>
-        <Table data={data?.data || []} isLoading={isLoading} error={error} />
-      </div>
-      {/* Filter section */}
-      <div className="mb-6">
-        <Filter filters={filters} onFilterChange={handleFilterChange} />
+
+        {/* Main content area */}
+        <div className="flex flex-col md:flex-row gap-6">
+          {/* Table section - grows to fill space */}
+          <div className="flex-grow overflow-x-auto bg-white rounded-lg shadow">
+            <Table
+              data={data?.data || []}
+              isLoading={isLoading}
+              error={error}
+            />
+          </div>
+
+          {/* Filter section - fixed width on md and above, full width on small screens */}
+          <div className="flex flex-col items-center w-full md:w-80 space-y-4">
+            <Filter filters={filters} onFilterChange={handleFilterChange} />
+            <Sort onSort={handleSort} />
+          </div>
+        </div>
       </div>
     </div>
   );
