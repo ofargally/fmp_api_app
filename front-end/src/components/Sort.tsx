@@ -1,14 +1,18 @@
 import React, { useState } from "react";
+type SortOption = "date" | "revenue" | "netIncome";
+interface SortProps {
+  onSort: (option: SortOption, order: "asc" | "desc") => void;
+}
 
-const Sort = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [sortBy, setSortBy] = useState("");
-  const [isAscending, setIsAscending] = useState(true);
-
-  const handleSort = (option: string) => {
+const Sort: React.FC<SortProps> = ({ onSort }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [sortBy, setSortBy] = useState<SortOption>("date");
+  const [isAscending, setIsAscending] = useState<boolean>(false);
+  const sortOptions: SortOption[] = ["date", "revenue", "netIncome"];
+  const handleSort = (option: "date" | "revenue" | "netIncome"): void => {
     setSortBy(option);
     setIsOpen(false);
-    // Add sorting logic
+    onSort(option, isAscending ? "asc" : "desc");
   };
 
   return (
@@ -31,7 +35,7 @@ const Sort = () => {
                 Order: {isAscending ? "Ascending ↑" : "Descending ↓"}
               </button>
             </div>
-            {["Date", "Revenue", "Net Income"].map((option) => (
+            {sortOptions.map((option) => (
               <button
                 key={option}
                 onClick={() => handleSort(option)}

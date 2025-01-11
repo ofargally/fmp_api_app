@@ -1,13 +1,15 @@
 from typing import Optional
 from fastapi import FastAPI, HTTPException, Query
 from models import FinancialData, FinancialDataResponse
+from fastapi.middleware.cors import CORSMiddleware
 from utils import fetch_financial_data
 from contextlib import asynccontextmanager
 from dotenv import load_dotenv
 import os
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '.env'))
 api_key = os.getenv('API_KEY')
-
+deployment_url = os.getenv('DEPLOYMENT_URL')
+localhost = os.getenv('LOCAL_HOST')
 financial_data = []
 
 # Fetches from 3rd Party API --> Financial Modelling Prep
@@ -29,6 +31,16 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan, title="Data API")
+
+origins = [deployment_url, localhost]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
@@ -89,5 +101,5 @@ def get_financial_data(
         except Exception as e:
             print(f"Error processing item: {e}")
             continue
-
+    print(f"Returning {len(response_data)} items")
     return FinancialDataResponse(data=response_data)

@@ -7,6 +7,10 @@ export interface FinancialDataResponse {
   operating_income: number;
 }
 
+export interface FinancialDataResponseArray {
+  data: FinancialDataResponse[];
+}
+
 export interface FilterParams {
   start_year?: number;
   end_year?: number;

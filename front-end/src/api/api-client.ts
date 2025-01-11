@@ -18,7 +18,7 @@ class APIClient<T> {
     min_net_income?: number,
     max_net_income?: number,
     sort_by?: string,
-    order: string = "asc"
+    order: string = "desc"
   ) => {
     const params = {
       start_year,
