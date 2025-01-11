@@ -4,6 +4,7 @@ ValueGlance Application Material
 
 **_DEPLOYMENT_**
 FRONT-END: https://valueglancefrontend.onrender.com/
+
 BACK-END: https://valueglanceapp.onrender.com/
 
 DISCLAIMER: The free plan on Render does not support fully continuous deployment. The application may be down if the server is not running and requests may take up to 50 seconds to load.
