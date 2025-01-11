@@ -34,7 +34,8 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan, title="Data API")
 
-origins = [DEPLOYMENT_URL_1, DEPLOYMENT_URL_2, DEPLOYMENT_URL_3, localhost]
+origins = ['valueglanceproject.vercel.app',
+           DEPLOYMENT_URL_2, DEPLOYMENT_URL_3, localhost]
 
 app.add_middleware(
     CORSMiddleware,
