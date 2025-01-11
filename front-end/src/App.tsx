@@ -1,33 +1,15 @@
+import Filter from "./components/Filter";
+import Sort from "./components/Sort";
+import Table from "./components/Table";
+import useData from "./hooks/useData";
 function App() {
+  const data = useData();
+  console.log(data);
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <table className="table-auto">
-        <thead>
-          <tr>
-            <th>Song</th>
-            <th>Artist</th>
-            <th>Year</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-            <td>Malcolm Lockyer</td>
-            <td>1961</td>
-          </tr>
-          <tr>
-            <td>Witchy Woman</td>
-            <td>The Eagles</td>
-            <td>1972</td>
-          </tr>
-          <tr>
-            <td>Shining Star</td>
-            <td>Earth, Wind, and Fire</td>
-            <td>1975</td>
-          </tr>
-        </tbody>
-      </table>
+      <Sort />
+      <Filter />
+      <Table />
     </>
   );
 }

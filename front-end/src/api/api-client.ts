@@ -10,7 +10,6 @@ class APIClient<T> {
   constructor(endpoint: string) {
     this.endpoint = endpoint;
   }
-  // we are going to work on the log in endpoint
   fetchFinancialData = async (
     start_year?: number,
     end_year?: number,
